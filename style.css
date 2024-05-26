@@ -5,12 +5,13 @@
 }
 
 .screen {
-	width: 98%;
-	height: 100px;
+	width: 94%;
+	height: 88px;
 	background-color: pink;
 	border-radius: 12px;
 	margin: 3px;
 	font-family: sans-serif;
+	padding: 6px;
 }
 
 #calc-container {
