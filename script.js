@@ -40,12 +40,18 @@ function clearScreen(screen) {
 let operation;
 let num1;
 let num2;
-let numberButtons = document.querySelectorAll(".number-buttons > button");
+let numberButtons = document.querySelectorAll(".number-buttons > button.number, .number-buttons > #zero-button");
 let clearButton = document.querySelector(".config-buttons > .clear");
 let opButtons = document.querySelectorAll(".op-buttons > button, .config-buttons > .divide");
 let equalsButton = document.querySelector(".config-buttons > .equals");
+let backButton = document.querySelector(".backspace-container > button#back-button");
+let pointButton = document.querySelector(".number-buttons > #point-button");
 let screenBox = document.querySelector("#calc-container > .screen");
 let allButtons = document.querySelectorAll("button");
+
+backButton.addEventListener("click", (e) => {
+	screenBox.textContent = screenBox.textContent.slice(0, -1);
+});
 
 allButtons.forEach((button) => {
 	button.addEventListener("mouseover", (e) => {
