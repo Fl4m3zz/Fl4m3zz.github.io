@@ -33,3 +33,24 @@ function operate(num1, operator, num2) {
 	}
 }
 
+let operation;
+let numberButtons = document.querySelectorAll(".number-buttons > button");
+let clearButton = document.querySelector(".config-buttons > .clear");
+let opButtons = document.querySelectorAll("op-buttons > button");
+let screenBox = document.querySelector("#calc-container > .screen");
+
+clearButton.addEventListener("click", (e) => {
+	screenBox.textContent = "";
+});
+
+numberButtons.forEach((button) => {
+	button.addEventListener("click", (e) => {
+		screenBox.textContent += e.target.textContent;	
+	});
+});
+
+opButtons.forEach((button) => {
+	button.addEventListener("click", (e) => {
+		operation = e.target.textContent;
+	});	
+});
