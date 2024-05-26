@@ -59,9 +59,13 @@ numberButtons.forEach((button) => {
 opButtons.forEach((button) => {
 	button.addEventListener("click", (e) => {
 		operation = e.target.textContent;
-		num1 = screenBox.textContent;
+		num1 = parseInt(screenBox.textContent);
 		console.log(num1);
 		clearScreen(screenBox);
 	});	
 });
 
+equalsButton.addEventListener("click", (e) => {
+	num2 = parseInt(screenBox.textContent);
+	screenBox.textContent = operate(num1, operation, num2);
+});
