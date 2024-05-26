@@ -42,9 +42,25 @@ let num1;
 let num2;
 let numberButtons = document.querySelectorAll(".number-buttons > button");
 let clearButton = document.querySelector(".config-buttons > .clear");
-let opButtons = document.querySelectorAll(".op-buttons > button");
+let opButtons = document.querySelectorAll(".op-buttons > button, .config-buttons > .divide");
 let equalsButton = document.querySelector(".config-buttons > .equals");
 let screenBox = document.querySelector("#calc-container > .screen");
+let allButtons = document.querySelectorAll("button");
+
+allButtons.forEach((button) => {
+	button.addEventListener("mouseover", (e) => {
+		e.target.style.backgroundImage = "linear-gradient(rgb(0 0 0/20%) 0 0)";	
+	});
+	button.addEventListener("mouseout", (e) => {
+		e.target.style.backgroundImage = "none";
+	});
+});
+
+allButtons.forEach((button) => {
+	button.addEventListener("mouseout", (e) => {		
+		e.target.style.backgroundImage = "none";
+	});
+});
 
 clearButton.addEventListener("click", (e) => {
 	clearScreen(screenBox);
