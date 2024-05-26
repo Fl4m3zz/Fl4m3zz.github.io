@@ -1,0 +1,45 @@
+#align {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.screen {
+	width: 98%;
+	height: 100px;
+	background-color: pink;
+	border-radius: 12px;
+	margin: 3px;
+}
+
+#calc-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 50%;
+	border: solid black;
+	border-radius: 12px;
+	background-color: grey;
+}
+
+#calc-container .button-container {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+#calc-container button {	
+	text-decoration: none;
+	border: none;
+	border-radius: 12px;
+	background-color: lightblue;
+	width: 60px;
+	height: 100px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	padding: 0px;
+}
+
+#calc-container .number-buttons {
+	margin-right: 2px;
+}
