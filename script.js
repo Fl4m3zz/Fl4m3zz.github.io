@@ -33,14 +33,21 @@ function operate(num1, operator, num2) {
 	}
 }
 
+function clearScreen(screen) {
+	screen.textContent = "";
+}
+
 let operation;
+let num1;
+let num2;
 let numberButtons = document.querySelectorAll(".number-buttons > button");
 let clearButton = document.querySelector(".config-buttons > .clear");
-let opButtons = document.querySelectorAll("op-buttons > button");
+let opButtons = document.querySelectorAll(".op-buttons > button");
+let equalsButton = document.querySelector(".config-buttons > .equals");
 let screenBox = document.querySelector("#calc-container > .screen");
 
 clearButton.addEventListener("click", (e) => {
-	screenBox.textContent = "";
+	clearScreen(screenBox);
 });
 
 numberButtons.forEach((button) => {
@@ -52,5 +59,9 @@ numberButtons.forEach((button) => {
 opButtons.forEach((button) => {
 	button.addEventListener("click", (e) => {
 		operation = e.target.textContent;
+		num1 = screenBox.textContent;
+		console.log(num1);
+		clearScreen(screenBox);
 	});	
 });
+
