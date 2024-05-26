@@ -1,3 +1,17 @@
+function countDecimals(num) {
+	if (num.toString().includes(".")) {
+		return num.toString().split(".")[1].length;	
+	} else {
+		return 0;
+	}
+}
+
+function findMaxDecimals(num1, num2) {
+	let count1 = countDecimals(num1);
+	let count2 = countDecimals(num2);
+	return count1 > count2 ? count1 : count2;
+}
+
 function add(num1, num2) {
 	return num1 + num2;
 }
@@ -11,25 +25,33 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+	if (num2 === 0) {
+		alert("Skibidi");
+		return NaN
+	}
 	return num1 / num2;
 }
 
 function operate(num1, operator, num2) {
-	switch (operator) {
-		case "+":
-			return add(num1, num2);
-			break;
-		case "-":
-			return subtract(num1, num2);
-			break;
-		case "*" || "x" || ".":
-			return multiply(num1, num2);
-			break;
-		case "/":
-			return divide(num1, num2);
-			break;
-		default: 
-			break;
+	try {
+		switch (operator) {
+			case "+":
+				return add(num1, num2);
+				break;
+			case "-":
+				return subtract(num1, num2);
+				break;
+			case "*" || "x" || ".":
+				return multiply(num1, num2);
+				break;
+			case "/":
+				return divide(num1, num2);
+				break;
+			default: 
+				break;
+		}
+	} catch {
+		return null;
 	}
 }
 
@@ -78,16 +100,22 @@ numberButtons.forEach((button) => {
 	});
 });
 
+pointButton.addEventListener("click", (e) => {
+	if (!(screenBox.textContent.includes("."))) {
+		screenBox.textContent += e.target.textContent;
+	}
+});
+
 opButtons.forEach((button) => {
 	button.addEventListener("click", (e) => {
 		operation = e.target.textContent;
-		num1 = parseInt(screenBox.textContent);
+		num1 = parseFloat(screenBox.textContent);
 		console.log(num1);
 		clearScreen(screenBox);
 	});	
 });
 
 equalsButton.addEventListener("click", (e) => {
-	num2 = parseInt(screenBox.textContent);
-	screenBox.textContent = operate(num1, operation, num2);
+	num2 = parseFloat(screenBox.textContent);
+	screenBox.textContent = operate(num1, operation, num2).toFixed(findMaxDecimals(num1, num2));
 });
