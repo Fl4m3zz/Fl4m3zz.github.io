@@ -25,33 +25,29 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-	if (num2 === 0) {
-		alert("Skibidi");
-		return NaN
-	}
 	return num1 / num2;
 }
 
 function operate(num1, operator, num2) {
-	try {
-		switch (operator) {
-			case "+":
-				return add(num1, num2);
-				break;
-			case "-":
-				return subtract(num1, num2);
-				break;
-			case "*" || "x" || ".":
-				return multiply(num1, num2);
-				break;
-			case "/":
-				return divide(num1, num2);
-				break;
-			default: 
-				break;
-		}
-	} catch {
-		return null;
+	if (num2 == 0) {
+		alert("Erm, What the sigma?");
+		return 69420;
+	}
+	switch (operator) {
+		case "+":
+			return add(num1, num2);
+			break;
+		case "-":
+			return subtract(num1, num2);
+			break;
+		case "*" || "x" || ".":
+			return multiply(num1, num2);
+			break;
+		case "/":
+			return divide(num1, num2);
+			break;
+		default: 
+			break;
 	}
 }
 
@@ -92,6 +88,7 @@ allButtons.forEach((button) => {
 
 clearButton.addEventListener("click", (e) => {
 	clearScreen(screenBox);
+	num1, num2, operation = null;
 });
 
 numberButtons.forEach((button) => {
@@ -117,5 +114,9 @@ opButtons.forEach((button) => {
 
 equalsButton.addEventListener("click", (e) => {
 	num2 = parseFloat(screenBox.textContent);
-	screenBox.textContent = operate(num1, operation, num2).toFixed(findMaxDecimals(num1, num2));
+	if (num1 == null || num2 == null || operation == null) {
+		alert("Enter something first!");
+	} else {
+		screenBox.textContent = operate(num1, operation, num2).toFixed(findMaxDecimals(num1, num2));
+	}
 });
